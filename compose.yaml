@@ -33,9 +33,9 @@ services:
   #   ports:
   #     - 127.0.0.1:5432:5432
   #   volumes:
-      
+
   #     - postgres_data:/var/lib/postgresql/data
-      
+
   #   environment:
   #     POSTGRES_USER: postgres
   #     POSTGRES_PASSWORD: postgres
@@ -63,10 +63,10 @@ services:
 
       - /home/ubuntu/MLOps_examples/airflow_settings.yaml:/usr/local/airflow/airflow_settings.yaml:z
 
-      
+
       - airflow_logs:/usr/local/airflow/logs
-      
-    
+
+
 
   webserver:
     image: ml-ops-examples_dc0e2d/airflow:latest
@@ -96,10 +96,10 @@ services:
       - /home/ubuntu/MLOps_examples/plugins:/usr/local/airflow/plugins:z
       - /home/ubuntu/MLOps_examples/include:/usr/local/airflow/include:z
       - /home/ubuntu/MLOps_examples/tests:/usr/local/airflow/tests:z
-      
+
       - airflow_logs:/usr/local/airflow/logs
-      
-    
+
+
 
   triggerer:
     image: ml-ops-examples_dc0e2d/airflow:latest
@@ -120,8 +120,5 @@ services:
       - /home/ubuntu/MLOps_examples/dags:/usr/local/airflow/dags:z
       - /home/ubuntu/MLOps_examples/plugins:/usr/local/airflow/plugins:z
       - /home/ubuntu/MLOps_examples/include:/usr/local/airflow/include:z
-      
-      - airflow_logs:/usr/local/airflow/logs
-      
-    
 
+      - airflow_logs:/usr/local/airflow/logs

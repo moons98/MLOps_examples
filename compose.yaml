@@ -2,14 +2,15 @@ version: '3.4'
 
 x-common-env-vars: &common-env-vars
   AIRFLOW__CORE__EXECUTOR: LocalExecutor
-  AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql://postgres:example_pw@34.41.77.91:5432/postgres
-  # AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql://postgres:example_pw@34.41.77.91:5432
+  AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql://postgres:example_pw@34.41.77.91:5432
+  AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql://postgres:example_pw@34.41.77.91:5432
   AIRFLOW__CORE__LOAD_EXAMPLES: "False"
   AIRFLOW__CORE__FERNET_KEY: "d6Vefz3G9U_ynXB3cr7y_Ak35tAHkEGAVxuz_B-jzWw="
   AIRFLOW__WEBSERVER__SECRET_KEY: "ml-ops-examples_dc0e2d"
   AIRFLOW__WEBSERVER__RBAC: "True"
   AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "True"
   ASTRONOMER_ENVIRONMENT: local
+
 
 networks:
   airflow:
@@ -87,7 +88,7 @@ services:
       io.astronomer.docker.component: "airflow-webserver"
     depends_on:
       - scheduler
-      # - postgres
+      - postgres
     environment: *common-env-vars
     ports:
       - 127.0.0.1:8080:8080
